@@ -2,4 +2,4 @@
 set -e
 echo "Starting"
 
-xvfb-run wkhtmltoimage "$@"
+/wkhtmltox/bin/wkhtmltoimage "$@"
