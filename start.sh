@@ -2,4 +2,9 @@
 set -e
 echo "Starting"
 
-/wkhtmltox/bin/wkhtmltoimage "$@"
+export DOCKERHOST=`/sbin/ip route|awk '/default/ { print $3 }'`
+echo "Docker Host: " $DOCKERHOST
+start="$@"
+final=${start/dockerhost/$DOCKERHOST}
+
+/wkhtmltox/bin/wkhtmltoimage ${final}
